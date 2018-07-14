@@ -1,26 +1,14 @@
 clear;
 addpath('Filters\');
-%% get layers
-raw = imread('Media/scraps/pipe3.jpg');
-[bw_orange, bw_purple] = get_O_P(raw);
 
-%% 
+%% get centroids
+raw = imread('Media\scraps\green.jpg');
+[u1, u2, L1, L2] = get_centroids(raw);
 
+%% plot
 figure;
-subplot(1,2,1);
-imshow(bw_orange);
-title('Orange');
-subplot(1,2,2);
-imshow(bw_purple);
-title('Purple');
+imshow(raw);
 hold on
-
-%% get center of mass
-cm_orange = regionprops(bw_orange, 'centroid');
-cm_purple = regionprops(bw_purple, 'centroid');
-
-p = cm_purple.Centroid;
-text(p(1), p(2), 'purple');
-
-hold off
+text(u1, u2, 'T');
+text(L1, L2, 'B');
 
