@@ -1,5 +1,5 @@
 %% load image
-addpath('./Filters');
+addpath('./Filters/1');
 raw = imread('Media/scraps/Tape.jpg');
 %imshow(raw);
 
