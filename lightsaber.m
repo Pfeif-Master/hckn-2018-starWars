@@ -31,12 +31,16 @@ b = Uy - Ux * slope;
 %% set sizes
 s = size(img);
 h = 20; % hight
-w = 10; % width
+w = 15; % width
 mult = 3; %plasma scale factor
 
 %% scale plasma legth
 HorAng = atan2(dy, dx);
 xstend = mult * d * cos(HorAng);
+
+if xstend < 10
+    h = h *3;
+end
 
 for i = 0:xstend
     %% x directions
