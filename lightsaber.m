@@ -68,9 +68,9 @@ for i = 0:xstend
     end
     
     %% draw line
-    img([Ny - h : Ny + h],[Nx - w : Nx + w] , 1) = 0; %red
-    img([Ny - h : Ny + h],[Nx - w : Nx + w] , 2) = 255; %Green
-    img([Ny - h : Ny + h],[Nx - w : Nx + w] , 3) = 255; %Blue
+    img([Ny - h : Ny + h],[Nx - w : Nx + w] , 1) = 88; %red
+    img([Ny - h : Ny + h],[Nx - w : Nx + w] , 2) = 121; %Green
+    img([Ny - h : Ny + h],[Nx - w : Nx + w] , 3) = 173; %Blue
 end
 
 Image = img;
