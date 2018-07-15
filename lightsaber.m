@@ -18,6 +18,7 @@ b = Uy - Ux * slope;
 
 s = size(img);
 
+h = 20; % hight
 w = 10; % width
 for i = 0:d
     if slope > 0
@@ -26,22 +27,22 @@ for i = 0:d
         Nx = Ux + i;
     end
     
-    if Nx < 0
+    if Nx - w <= 0
         break;
     end
-    if s(2) < Nx
+    if s(2) <= Nx + w
         break;
     end
     
     Ny = b + floor(Nx * slope);
     Ny = floor(Ny);
-    if s(1) < Ny + w
+    if s(1) < Ny + h
         break;
     end
-    if Ny - w <= 0
+    if Ny - h <= 0
         break;
     end
-    img([Ny - w : Ny + w],Nx , :) = 255; 
+    img([Ny - h : Ny + h],[Nx - w : Nx + w] , :) = 255; 
 end
 
 Image = img;
