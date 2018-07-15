@@ -9,8 +9,8 @@ vw.FrameRate = vr.FrameRate / frameDivider;
 open(vw);
 
 i = 0;
-% while hasFrame(vr)
-while i < 60
+while hasFrame(vr)
+%while i < 60
     q = false;
     for k = 1 : frameDivider - 1
         if ~hasFrame(vr)
@@ -20,6 +20,9 @@ while i < 60
         readFrame(vr);%dump fram
     end
     if q
+        break;
+    end
+    if ~hasFrame(vr)
         break;
     end
     oldFrame = readFrame(vr);
@@ -38,9 +41,9 @@ while i < 60
         newFrame = insertText(newFrame, [L1, L2], 'L');
         newFrame = lightsaber(newFrame, floor(u1), floor(u2), floor(L1), floor(L2));
     end
-    imwrite(oldFrame, ['Media\debug\raw\Image' int2str(i), '.jpg']);
-    imwrite(newFrame, ['Media\debug\out\Image' int2str(i), '.jpg']);
-    % imshow(newFrame);
+%     imwrite(oldFrame, ['Media\debug\raw\Image' int2str(i), '.jpg']);
+%     imwrite(newFrame, ['Media\debug\out\Image' int2str(i), '.jpg']);
+%     imshow(newFrame);
     writeVideo(vw, newFrame);
     
 
