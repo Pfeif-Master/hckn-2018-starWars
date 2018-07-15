@@ -38,8 +38,8 @@ mult = 3; %plasma scale factor
 HorAng = atan2(dy, dx);
 xstend = mult * d * cos(HorAng);
 
-if xstend < 10
-    h = h *3;
+if xstend < 15
+    h = h * 4;
 end
 
 for i = 0:xstend
