@@ -1,7 +1,7 @@
 clear;
 addpath('Filters\');
 
-frameDivider = 2;
+frameDivider = 1;
 
 vr = VideoReader('Media\Test_Footage_Lightsaber.MP4');
 vw = VideoWriter('Media\output1.MP4');
@@ -10,9 +10,8 @@ open(vw);
 
 i = 0;
 while hasFrame(vr)
-
-    for k = 1 : frameDivider
-        q = false;
+    q = false;
+    for k = 1 : frameDivider - 1
         if ~hasFrame(vr)
             q = true;
             break
@@ -30,7 +29,7 @@ while hasFrame(vr)
         newFrame = insertText(newFrame, [L1, L2], 'L');
         newFrame = lightsaber(newFrame, floor(u1), floor(u2), floor(L1), floor(L2));
     end
-%     imshow(newFrame);
+%      imshow(newFrame);
     writeVideo(vw, newFrame);
     
 
