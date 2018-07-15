@@ -29,7 +29,7 @@ while hasFrame(vr)
         newFrame = insertText(newFrame, [L1, L2], 'L');
         newFrame = lightsaber(newFrame, floor(u1), floor(u2), floor(L1), floor(L2));
     end
-%      imshow(newFrame);
+    % imshow(newFrame);
     writeVideo(vw, newFrame);
     
 
