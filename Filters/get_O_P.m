@@ -1,8 +1,8 @@
 function [orange_layer,purple_layer] = get_O_P(raw_RGB)
 %GET_O_P returns two binary images, one for orange, one for purple
 
-%% null background
-[bg_waste, nb] = rm_greenScreen(raw_RGB);
+%% get markers
+nb = stage1(raw_RGB);
 
 %% get purple
 p = filter_purple(nb);

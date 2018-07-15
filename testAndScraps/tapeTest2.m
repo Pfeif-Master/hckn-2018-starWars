@@ -1,5 +1,5 @@
 %% load image
-addpath('./Filters');
+addpath('./Filters/old_filters/');
 raw = imread('Media/scraps/green.jpg');
 %imshow(raw);
 
@@ -16,19 +16,19 @@ orange_layer = filter_orange(rmGS);
 
 %% printAll
 figure;
-subplot(1,4,1);
+subplot(2,2,1);
 imshow(raw);
 title('raw');
 
-subplot(1,4,2);
+subplot(2,2,2);
 imshow(rmGS);
 title('No back ground')
 
-subplot(1,4,3);
+subplot(2,2,3);
 imshow(purple_layer);
 title('purple Layer');
 
-subplot(1,4,4);
+subplot(2,2,4);
 imshow(orange_layer);
 title('Orange Layer');
 
