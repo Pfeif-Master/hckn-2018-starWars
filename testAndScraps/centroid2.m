@@ -10,8 +10,7 @@ open(vw);
 
 i = 0;
 while hasFrame(vr)
-% while(i < 10)
-    %skip n frames
+
     for k = 1 : frameDivider
         q = false;
         if ~hasFrame(vr)
@@ -29,12 +28,13 @@ while hasFrame(vr)
     if(v)
         newFrame = insertText(oldFrame, [u1, u2], 'U');
         newFrame = insertText(newFrame, [L1, L2], 'L');
+        newFrame = lightsaber(newFrame, floor(u1), floor(u2), floor(L1), floor(L2));
     end
-    %imshow(newFrame);
+%     imshow(newFrame);
     writeVideo(vw, newFrame);
     
 
-    i = i + 1;
+    i = i + 1
 end
 
 close(vw);

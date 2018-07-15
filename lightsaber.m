@@ -1,30 +1,51 @@
-function Image = lightsaber(img,p1x, p1y, p2x, p2y)
+function Image = lightsaber(img,Ux, Uy, Lx, Ly)
 
 % p2x = 550;
 % p2y = 700;
 % p1x = 500;
 % p1y = 600;
 
-dx = p2x -p1x;
-dy = p2y - p1y;
-
-slope = dy/dx
-
-p2x = p2x -10;
-
-% make line thicker
-%assume cm2 is (550, 700)
-for k = [1:1:20];
-    p2x = p2x +1;
-    % make line thicker
-    for i = [1:1:4*dx]
-
-        img(p2x+i, p2y+slope*i) = 0;
-
-    end
+dx = Ux - Lx;
+if dx == 0
+    dx = 1; %no neg infinty please
 end
+dy = Uy - Ly;
+d = pdist([Ux, Uy; Lx, Ly]);
+
+slope = dy/dx;
+b = Uy - Ux * slope;
+%p2x = p2x -10;
+
+s = size(img);
+
+w = 10; % width
+for i = 0:d
+    if slope > 0
+        Nx = Ux - i;
+    else
+        Nx = Ux + i;
+    end
+    
+    if Nx < 0
+        break;
+    end
+    if s(2) < Nx
+        break;
+    end
+    
+    Ny = b + floor(Nx * slope);
+    Ny = floor(Ny);
+    if s(1) < Ny + w
+        break;
+    end
+    if Ny - w <= 0
+        break;
+    end
+    img([Ny - w : Ny + w],Nx , :) = 255; 
+end
+
 Image = img;
-imshow(Image);
+% imshow(Image);
 % assignin('uint8', image, img)
 
 end
